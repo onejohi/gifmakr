@@ -1,6 +1,6 @@
-# New Project
+# Onejohi's GifMkr
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+> ✨ Upload a video and convert it into a 2.5 second gif!
 
 ## Available Scripts
 
