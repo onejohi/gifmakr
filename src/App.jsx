@@ -30,32 +30,53 @@ function App() {
   return ready ? 
     (
     <div className="App">
-      <div className="nav navbar-dark bg-dark">
-        <div className="text-center navbar-brand mx-4 my-2">
-          Onejohi's GifMakr
+      <div className="nav navbar-dark bg-dark text-center">
+        <div className="navbar-brand mx-4 my-2">
+          Giff
         </div>
       </div>
       <div className="card m-3 text-center">
         <div className="card-body">
-          {video && <video controls width="250" src={URL.createObjectURL(video)}></video>}
-          <h3 className="display-4">
-            Choose a video to convert
-          </h3>
-          <span className="btn btn-primary btn-file">
-          <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} />
-          </span>
-
-          <h3>Result</h3>
-          <button className="btn btn-primary" onClick={convertToGif}>Convert Video</button>
-
-          { gif && <img src={gif} width="250" />}
+          {
+            !video &&
+            <div>
+              <h5 className="display-6">
+                Choose a video to convert
+              </h5>
+              <span className="btn btn-primary btn-file">
+                <input type="file" class="form-control" onChange={(e) => setVideo(e.target.files?.item(0))} />
+                Import Video
+              </span>
+            </div>
+          }
+          {
+            video && !gif &&
+            <div>
+              <video controls width="250" src={URL.createObjectURL(video)}></video>
+              <br />
+              <button className="btn btn-primary mt-3" onClick={convertToGif}>Convert Video</button>
+            </div>
+          }
+          {
+            gif && 
+            <div>
+              <img src={gif} width="250" />
+              <br />
+              <a className="btn btn-success mt-3" href={gif} download>Download Gif</a>
+            </div>
+          }
         </div>
       </div>
     </div>
     )
     :
     (
-      <p>this app size is 25MB, it might take a while to load...</p>
+      <div className="card m-5">
+        <div className="card-body text-center">
+          <h1 className="fs-1 bolder display-1">GIFF</h1>
+          <p>Loading...</p>
+        </div>
+      </div>
     );
 }
 
